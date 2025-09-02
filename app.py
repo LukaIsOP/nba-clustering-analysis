@@ -270,19 +270,20 @@ if len(features_to_use) >= 2:
         cluster_centers = []
         for i in range(n_clusters):
             cluster_data = df_filtered[df_filtered['cluster'] == i]
-            center_ppg = cluster_data['ppg'].mean()
-            center_apg = cluster_data['apg'].mean()
-            cluster_centers.append((center_ppg, center_apg))
-            
-            # Add center point
-            fig.add_trace(go.Scatter(
-                x=[center_ppg], 
-                y=[center_apg],
-                mode='markers',
-                marker=dict(size=15, color='red', symbol='x', line=dict(width=3, color='white')),
-                name=f'Cluster {i} Center',
-                showlegend=True
-            ))
+            if len(cluster_data) > 0:
+                center_ppg = cluster_data['ppg'].mean()
+                center_apg = cluster_data['apg'].mean()
+                cluster_centers.append((center_ppg, center_apg))
+                
+                # Add center point
+                fig.add_trace(go.Scatter(
+                    x=[center_ppg], 
+                    y=[center_apg],
+                    mode='markers',
+                    marker=dict(size=15, color='red', symbol='x', line=dict(width=3, color='white')),
+                    name=f'Cluster {i} Center',
+                    showlegend=True
+                ))
         
         fig.update_layout(height=600, showlegend=True)
         st.plotly_chart(fig, use_container_width=True)
