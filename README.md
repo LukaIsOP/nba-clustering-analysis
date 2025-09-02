@@ -4,7 +4,7 @@ Interactive NBA player clustering analysis using K-means machine learning to ide
 
 ## Live Demo
 
-
+https://nba-clustering-analysis.streamlit.app/
 ## Features
 - **Interactive Clustering**: Visualize player groupings with customizable parameters
 - **3D Visualizations**: Explore clusters in multiple dimensions  
